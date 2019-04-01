@@ -93,14 +93,14 @@ func (h *hanoiTower) moveDisksBetweenTwoStacks(src, dst stack.Stack, labelSrc, l
 	if p1Top.(int) > p2Top.(int) {
 		src.Push(p1Top)
 		src.Push(p2Top)
-		h.logMove(p2Top.(int), labelDst, labelSrc)
+		h.logMove(p2Top, labelDst, labelSrc)
 		return
 	}
 
 	// p1Top.(int) < p2Top.(int)
 	dst.Push(p2Top)
 	dst.Push(p1Top)
-	h.logMove(p1Top.(int), labelSrc, labelDst)
+	h.logMove(p1Top, labelSrc, labelDst)
 }
 
 func (h *hanoiTower) logMove(diskNumber interface{}, from, to string) {
@@ -108,5 +108,5 @@ func (h *hanoiTower) logMove(diskNumber interface{}, from, to string) {
 		return
 	}
 
-	log.Printf("Move disk %i from %s to %s", diskNumber, from, to)
+	log.Printf("Move disk %d from %s to %s", diskNumber, from, to)
 }
