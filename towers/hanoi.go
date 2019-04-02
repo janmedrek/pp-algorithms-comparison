@@ -15,18 +15,18 @@ func NewHanoiTower(disksNumber int, silent bool) HanoiTower {
 	return &hanoiTower{
 		silent:      silent,
 		disksNumber: disksNumber,
-		srcStack:    *stack.New(),
-		auxStack:    *stack.New(),
-		dstStack:    *stack.New(),
+		srcStack:    stack.New(),
+		auxStack:    stack.New(),
+		dstStack:    stack.New(),
 	}
 }
 
 type hanoiTower struct {
 	silent      bool
 	disksNumber int
-	srcStack    stack.Stack
-	auxStack    stack.Stack
-	dstStack    stack.Stack
+	srcStack    *stack.Stack
+	auxStack    *stack.Stack
+	dstStack    *stack.Stack
 }
 
 func (h *hanoiTower) SolveRecursive() {
@@ -74,7 +74,7 @@ func (h *hanoiTower) solveIterative(diskNumber int, src, aux, dst string) {
 	}
 }
 
-func (h *hanoiTower) moveDisksBetweenTwoStacks(src, dst stack.Stack, labelSrc, labelDst string) {
+func (h *hanoiTower) moveDisksBetweenTwoStacks(src, dst *stack.Stack, labelSrc, labelDst string) {
 	p1Top := src.Pop()
 	p2Top := dst.Pop()
 
